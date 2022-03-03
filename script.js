@@ -5,7 +5,8 @@ const urlAPIsPokemon = 'https://pokeapi.co/'
 
 //Variables HTML.
 
-const idForm = document.getElementById('form')
-const Search = document.getElementById('')
+const Form = document.getElementById('form')
+const Search = document.getElementById('search')
+const Submit = document.getElementById('submit')
 
 
