@@ -1,5 +1,5 @@
 
-// Variable de la API's.
+// Variable de la API.
 
  const urlAPIpokemon = 'https://pokeapi.co/api/v2/pokemon/';
 
@@ -10,13 +10,17 @@ const search = document.getElementById('search');
  const submit = document.getElementById('submit');
  const main = document.getElementById('main');
 
+//Promesas usando fetch y await para consumir la API
+
 const getPokemons = async (url,id) => {
     const res = await fetch (url + id)
     const data = await res.json()
     console.log(data);
-    //showPokemons(data.results);
+    CrearPokemons(data);
 
 }
+
+// Hice un ciclo for para traer 52 tarjetas de pokemons.
 
  function TraerPokemones (number) {
 
@@ -27,21 +31,25 @@ const getPokemons = async (url,id) => {
     }
  }
 
- TraerPokemones(20);
+ TraerPokemones(52);
 
 
 function CrearPokemons(pokemon) {
     
+const pokeDiv = document.createElement('div');
+const pokename = document.createElement('div');
+const sprite = document.createElement('img')
+const habilidad = document.createElement('div');
 
-
+habilidad.textContent = pokemon.abilities[0].ability.name;
+sprite.src = pokemon.sprites.front_default
+pokename.textContent = pokemon.name
+pokeDiv.appendChild(pokename)
+pokeDiv.appendChild(sprite)
+pokeDiv.appendChild(habilidad)
+main.appendChild(pokeDiv)
+pokeDiv.classList.add('card')
 }
  
 
-// const showPokemons = (pokemons) => {
-
-//     main.interHTML =''
-//     movies.forEach( pokemons => {
-        
-//     });
-// }
 
