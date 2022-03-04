@@ -26,13 +26,14 @@ const getPokemons = async (url,id) => {
 
     for (let i = 1; i <= number; i++) {
        
-        getPokemons(urlAPIpokemon, i)
+        getPokemons(urlAPIpokemon, i) 
         
     }
  }
 
  TraerPokemones(52);
 
+ //En un function guardé los datos que quería mostrar en pantalla.
 
 function CrearPokemons(pokemon) {
     
@@ -40,16 +41,33 @@ const pokeDiv = document.createElement('div');
 const pokename = document.createElement('div');
 const sprite = document.createElement('img')
 const habilidad = document.createElement('div');
+const move = document.createElement('div');
 
+move.textContent = pokemon.moves[0].move.name;
 habilidad.textContent = pokemon.abilities[0].ability.name;
 sprite.src = pokemon.sprites.front_default
 pokename.textContent = pokemon.name
+
 pokeDiv.appendChild(pokename)
 pokeDiv.appendChild(sprite)
 pokeDiv.appendChild(habilidad)
+pokeDiv.appendChild(move)
 main.appendChild(pokeDiv)
 pokeDiv.classList.add('card')
 }
  
+//Buscador.
 
 
+form.addEventListener('submit', (e) => {
+    e.preventDefault ()
+const rastreo = search.value.toLocalLowereCase()
+
+    if (rastreo && rastreo !== '') {
+        
+        getPokemons(urlAPIpokemon + rastreo)
+        rastreo.value=''
+    } else {
+        alert('no encontrado');
+    }
+})
